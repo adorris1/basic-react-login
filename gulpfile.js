@@ -30,3 +30,13 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', ['watch']);
+
+// For production
+gulp.task('build', function(){
+  gulp.src(path.JS)
+    .pipe(react())
+    .pipe(concat(path.MINIFIED_OUT))
+    .pipe(uglify(path.MINIFIED_OUT))
+    .pipe(gulp.dest(path.DEST_BUILD));
+});
+
