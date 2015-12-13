@@ -1,29 +1,27 @@
 {
   "name": "react-app",
   "version": "1.0.0",
-  "description": "Learning React, following along Tyler Mcginnis's tutorial here: http://tylermcginnis.com/reactjs-tutorial-pt-2-building-react-applications-with-gulp-and-browserify/",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Following Tyler Mcginnis's tutorial here: http://tylermcginnis.com/reactjs-tutorial-pt-2-building-react-applications-with-gulp-and-browserify/",
+  "main": "App.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ammarm08/react-app.git"
+    "url": "https://github.com/ammarm08/react-app"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ammarm08/react-app/issues"
-  },
-  "homepage": "https://github.com/ammarm08/react-app#readme",
-  "devDependencies": {
-    "jsx-loader": "^0.13.2",
-    "webpack": "^1.12.9"
+  "author": "Ammar Mian",
+  "scripts": {
+    "start": "npm run build && npm run dev-server",
+    "build": "./node_modules/.bin/webpack",
+    "dev-server": "node_modules/.bin/http-server -p 3000 public/"
   },
   "dependencies": {
     "axios": "^0.8.0",
     "events": "^1.1.0",
     "flux": "^2.1.1",
     "react": "^0.14.3"
+  },
+  "devDependencies": {
+    "jsx-loader": "^0.13.2",
+    "webpack": "^1.12.9",
+    "http-server": "^0.8.5"
   }
 }

@@ -1,40 +1,33 @@
 var React = require('react');
-
 var AddItem = require('./AddItem');
 var List = require('./List');
 var todoStore = require('../stores/todoStore');
 var todoActions = require('../actions/todoActions');
 
 var ListContainer = React.createClass({
-  // initializing list by fetching from store
-  getInitialState: function() {
+  getInitialState: function(){
     return {
       list: todoStore.getList()
     }
   },
-  // event listeners
-  componentDidMount: function() {
+  componentDidMount: function(){
     todoStore.addChangeListener(this._onChange);
   },
-  componentWillUnmount: function() {
+  componentWillUnmount: function(){
     todoStore.removeChangeListener(this._onChange);
   },
-  // adding to/removing from store
-  handleAddItem: function(item) {
-    todoActions.addItem(item);
+  handleAddItem: function(newItem){
+    todoActions.addItem(newItem);
   },
-  handleRemoveItem: function(index) {
+  handleRemoveItem: function(index){
     todoActions.removeItem(index);
   },
-  // re-fetch from store whenever there's a state change
   _onChange: function(){
     this.setState({
-      list: todoStore.getList();
+      list: todoStore.getList()
     })
   },
-
-  // pass component's state and store down to children
-  render: function() {
+  render: function(){
     return (
       <div className="col-sm-6 col-md-offset-3">
         <div className="col-sm-12">
