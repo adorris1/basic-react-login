@@ -11,18 +11,20 @@
   "scripts": {
     "start": "npm run build && npm run dev-server",
     "build": "./node_modules/.bin/webpack",
-    "dev-server": "node_modules/.bin/http-server -p 3000 public/"
+    "dev-server": "nodemon server/server.js"
   },
   "dependencies": {
     "axios": "^0.8.0",
+    "body-parser": "^1.14.1",
     "events": "^1.1.0",
+    "express": "^4.13.3",
     "flux": "^2.1.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
-    "webpack": "^1.12.9",
-    "http-server": "^0.8.5"
+    "nodemon": "^1.8.1",
+    "webpack": "^1.12.9"
   }
 }
