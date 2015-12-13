@@ -7,6 +7,7 @@ var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('gulp-streamify');
 
+// These are handy constants we can use when registering Gulp tasks later
 var path = {
   HTML: 'src/index.html',
   MINIFIED_OUT: 'build.min.js',
@@ -17,11 +18,14 @@ var path = {
   ENTRY_POINT: './src/js/App.js'
 };
 
+// Copy our html file to dist/
 gulp.task('copy', function(){
   gulp.src(path.HTML)
     .pipe(gulp.dest(path.DEST));
 });
 
+// whenever a change is noted in our HTML or App.js file,
+// run our copy and bundling tasks, outputting files to dist/ & dist/src
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copy']);
 
@@ -43,6 +47,7 @@ gulp.task('watch', function() {
     .pipe(gulp.dest(path.DEST_SRC));
 });
 
+// replace the .js files in our html file to our build file
 gulp.task('replaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(htmlreplace({
@@ -51,6 +56,8 @@ gulp.task('replaceHTML', function(){
     .pipe(gulp.dest(path.DEST));
 });
 
+// transform jsx to js, browserify our files, minify + uglify.
+// then output this file to dist/build
 gulp.task('build', function(){
   browserify({
     entries: [path.ENTRY_POINT],
@@ -62,5 +69,8 @@ gulp.task('build', function(){
     .pipe(gulp.dest(path.DEST_BUILD));
 });
 
+// **** DEVELOPMENT ****
 gulp.task('default', ['watch']);
+
+// **** PRODUCTION ****
 gulp.task('production', ['replaceHTML', 'build']);
