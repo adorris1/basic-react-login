@@ -1,4 +1,5 @@
 var React = require('react');
+var render = require('react-dom').render;
 var ListContainer = require('./components/ListContainer.js');
 
 var App = React.createClass({
@@ -13,7 +14,7 @@ var App = React.createClass({
   }
 });
 
-React.render(
+render(
   <App />,
   document.getElementById('app')
 )
