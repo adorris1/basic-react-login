@@ -5,6 +5,23 @@ var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
 
+var createStore = require('fluxible/addons').createStore;
+
+
+var todoStore = createStore({
+  storeName: 'todoStore',
+
+  handlers: {
+    'ADD_ITEM': 'addItem',
+    'REMOVE_ITEM': 'removeItem'
+  },
+
+    initialize: function(){
+
+    }
+
+})
+
 // temp "database"
 var _store = {
   list: []
